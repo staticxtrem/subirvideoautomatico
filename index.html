@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subir Video Automático</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            color: red;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Subir Video Automático</h1>
+        
+        <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        
+        <div class="form-group">
+            <label for="video">Video:</label>
+            <input type="file" id="video" name="video">
+        </div>
+        
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title">
+        </div>
+        
+        <div class="form-group">
+            <label for="hashtags">Hashtags:</label>
+            <textarea id="hashtags" name="hashtags" rows="3"></textarea>
+        </div>
+        
+        <button onclick="subirVideo()">Subir Video</button>
+    </div>
+
+    <script>
+        // Función para guardar el usuario y la contraseña en el almacenamiento local del navegador
+        function guardarCredenciales() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+        }
+        
+        // Función para cargar las credenciales almacenadas si están disponibles
+        function cargarCredenciales() {
+            var username = localStorage.getItem('username');
+            var password = localStorage.getItem('password');
+            if (username && password) {
+                document.getElementById('username').value = username;
+                document.getElementById('password').value = password;
+            }
+        }
+
+        // Función para subir el video
+        function subirVideo() {
+            var video = document.getElementById('video').files[0];
+            var title = document.getElementById('title').value;
+            var hashtags = document.getElementById('hashtags').value;
+
+            // Lógica para subir el video y procesar los datos
+            // Puedes utilizar librerías o servicios externos para realizar la subida y procesamiento
+
+            // Ejemplo: Mostrar los datos en la consola
+            console.log('Video:', video);
+            console.log('Título:', title);
+            console.log('Hashtags:', hashtags);
+
+            // Obtener las credenciales almacenadas
+            var username = localStorage.getItem('username');
+            var password = localStorage.getItem('password');
+
+            // Lógica para utilizar las credenciales con la aplicación Python
+            // Puedes enviar las credenciales a través de una API o algún otro método de comunicación
+        }
+
+        // Cargar las credenciales almacenadas al cargar la página
+        cargarCredenciales();
+    </script>
+</body>
+</html>
